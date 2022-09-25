@@ -85,8 +85,8 @@ mean_height_mass <- summarize(starwars,
 # Practice 26
 gender <- group_by(starwars, sex)
 height_mass_gender <- summarize(gender, 
-                          mean_height = mean(height, na.rm=TRUE), 
-                          mean_mass = mean(mass, na.rm=TRUE))
+                                mean_height = mean(height, na.rm=TRUE), 
+                                mean_mass = mean(mass, na.rm=TRUE))
 
 # Practice 27
 female_species <- group_by(females, species)
