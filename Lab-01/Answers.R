@@ -78,10 +78,28 @@ evaluate_eyecolor <- mutate(starwars, eye_color = ifelse(eye_color %in% c("black
 # Practice 24
 evaluate_heights <- mutate(starwars, height = ifelse(height < 75 | height > 200, NA, height))
 
+# Practice 25
+mean_height_mass <- summarize(starwars, 
+                              mean_ht = mean(height, na.rm=TRUE), 
+                              mean_mass = mean(mass, na.rm=TRUE))
+# Practice 26
+gender <- group_by(starwars, sex)
+height_mass_gender <- summarize(gender, 
+                          mean_ht = mean(height, na.rm=TRUE), 
+                          mean_wt = mean(mass, na.rm=TRUE))
+
+# Practice 27
+female_species <- group_by(females, species)
+mean_height_females <- summarize(female_species, mean_height = mean(height, na.rm = TRUE))
 
 
+mean_height_females <- starwars %>% # or with this
+  filter(sex == "female") %>%
+  group_by(species) %>%
+  summarize(mean_height = mean(height, na.rm = TRUE))
 
+# Practice 28
+# ???
 
-
-
-
+# Practice 29
+# ???
