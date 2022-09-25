@@ -80,13 +80,13 @@ evaluate_heights <- mutate(starwars, height = ifelse(height < 75 | height > 200,
 
 # Practice 25
 mean_height_mass <- summarize(starwars, 
-                              mean_ht = mean(height, na.rm=TRUE), 
+                              mean_height = mean(height, na.rm=TRUE), 
                               mean_mass = mean(mass, na.rm=TRUE))
 # Practice 26
 gender <- group_by(starwars, sex)
 height_mass_gender <- summarize(gender, 
-                          mean_ht = mean(height, na.rm=TRUE), 
-                          mean_wt = mean(mass, na.rm=TRUE))
+                          mean_height = mean(height, na.rm=TRUE), 
+                          mean_mass = mean(mass, na.rm=TRUE))
 
 # Practice 27
 female_species <- group_by(females, species)
