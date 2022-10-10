@@ -1,0 +1,14 @@
+name: Ideologies
+title: Ideologies
+username:
+account: berkanktk
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7263610
+bundleId: 6387919
+url: https://berkanktk.shinyapps.io/Ideologies/
+when: 1665412644.85401
+lastSyncTime: 1665412644.85403
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: DataExerciseCodebook.txt|Debug.R|RcodeExerciseShinyApps.R
