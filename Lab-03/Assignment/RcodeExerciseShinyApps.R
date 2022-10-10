@@ -1,21 +1,21 @@
 library(shiny)
 library(tidyverse)
+library(dplyr)
 
 #####Import Data
 
-#type in your data path
+# Type in your data path
 dat<-read_csv("DataExerciseShinyApps.csv")
-dat<- dat %>% select(c("pid7","ideo5"))
+dat<- dat %>% select(c("pid7","ideo5")) # Party ID and ideology
 
-#remove missing values 
+# Remove missing values 
 dat<-drop_na(dat)
-
 
 # UI component
 ui <- fluidPage(
   
   # Application title
-  titlePanel("Ideology"),
+  titlePanel("Party Ideologies"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -25,7 +25,6 @@ ui <- fluidPage(
                   min = 1,
                   max = 5,
                   value = 3),
-      
                 # hr(),
                 # helpText("Data from 1000 respondents.")
     ),
@@ -41,15 +40,27 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   output$distPlot <- renderPlot({
+    filtered_dat <-filter(dat, ideo5 == input$bins)
     
-    # draw the histogram with the specified number of bins
-    hist(x = dat$pid7,
-         #breaks = input$bins,
-         #ylim = c(0,100),
-         xlab = '7 Point party ID, 1=very D, 7=very R',
-         ylab = 'Count',
-         main = 'Histogram over ideologies',
-        )
+    x <- filtered_dat$pid7
+
+    # Drawing the histogram 
+    ggplot(filtered_dat, aes(x=pid7)) + 
+      geom_histogram(color="black", 
+                     fill="gray", 
+                     binwidth = 1) + 
+      labs(x = '7 Point party ID, 1=very D, 7=very R', y='Count') +
+      scale_x_continuous(breaks = seq(1,7, by=1))
+    
+  
+#    hist(x = x,
+#         #breaks = input$bins,
+#         #ylim = c(0,100),
+#         xlab = '7 Point party ID, 1=very D, 7=very R',
+#         ylab = 'Count',
+#         main = 'Histogram over ideologies',
+#         breaks = 7
+#        )
     
     })
 }
