@@ -31,7 +31,7 @@ ui <- fluidPage(
     
     mainPanel(
       plotOutput(outputId = "scatterplot", brush = "plot_brush"),
-      DT::dataTableOutput(outputId = "moviestable"),
+      DT::dataTableOutput(outputId = "moviestable"), # Table comes from here
       br()
     )
   )
